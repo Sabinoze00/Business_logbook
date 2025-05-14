@@ -1,0 +1,66 @@
+# ------------------------------
+# File e cartelle sensibili
+# ------------------------------
+.secrets/                 # Cartella per segreti locali (alternativa a .streamlit/secrets.toml)
+.streamlit/secrets.toml   # File di configurazione sensibile di Streamlit (locale)
+credentials/              # Tutte le credenziali (Google, API, etc.)
+*.json                    # Esclude tutti i file JSON (se non vuoi versionarne altri)
+*.pem                     # Chiavi private
+*.key                     # File di chiavi
+.env                      # Variabili d'ambiente locali
+.env.local                # File di ambiente locale alternativo
+
+# ------------------------------
+# Cache e file generati
+# ------------------------------
+__pycache__/              # Bytecode Python
+*.py[cod]                 # Estensioni compilate di Python
+*.pyc
+*.pyo
+*.pyd
+*.so
+.ipynb_checkpoints/       # Checkpoint di Jupyter Notebook
+.pytest_cache/            # Cache di pytest
+
+# ------------------------------
+# Ambienti virtuali e pacchetti
+# ------------------------------
+venv/                     # Ambiente virtuale Python (Virtualenv)
+env/                      # Ambiente virtuale alternativo
+.venv/                    # Altra convenzione per ambienti virtuali
+ENV/                      # Ambiente virtuale (alcuni setup)
+*.egg-info/               # Metadati di pacchetti Python
+dist/                     # Distribuzioni buildate
+build/                    # Cartella di build
+*.egg                     # Pacchetti Python in formato egg
+site/                     # Cartella di output per documentazione
+
+# ------------------------------
+# Dati e file temporanei
+# ------------------------------
+data/                     # Cartella con dati locali (CSV, DB, etc.)
+*.csv                     # File di dati (se non vuoi versionarli)
+*.db                      # Database SQLite
+*.sqlite
+*.parquet
+*.feather
+temp/                     # File temporanei
+*.tmp                     # File temporanei
+*.log                     # File di log
+logs/                     # Cartella di log
+
+# ------------------------------
+# Configurazioni IDE e Editor
+# ------------------------------
+.idea/                    # Configurazioni di JetBrains (PyCharm)
+.vscode/                  # Configurazioni di VS Code
+*.swp                     # File temporanei di Vim
+*.swo
+*.code-workspace          # Workspace di VS Code
+
+# ------------------------------
+# File di sistema
+# ------------------------------
+.DS_Store                 # File di metadati macOS
+Thumbs.db                 # File di metadati Windows
+Desktop.ini               # File di sistema Windows

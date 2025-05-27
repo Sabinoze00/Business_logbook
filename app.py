@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-import calendar # Non sembra usato direttamente, ma lo lascio se serve a moduli importati
+import calendar
 import locale
 import sys
 import os
@@ -13,8 +13,8 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 # Importiamo i moduli personalizzati
 from data_loader import load_sheets_data, convert_eu_to_number
 from data_processor import process_logbook, merge_data, filter_data
-from visualizations import create_hours_chart, create_clients_chart, create_metrics_cards # create_metrics_cards non sembra usato
-from utils import months_it_to_num, get_month_range, format_currency # months_it_to_num, get_month_range non sembrano usati
+from visualizations import create_hours_chart, create_clients_chart, create_metrics_cards
+from utils import months_it_to_num, get_month_range, format_currency
 
 # Configurazione pagina
 st.set_page_config(
@@ -83,6 +83,14 @@ def extract_month_from_date(date):
 
 def main():
     st.title("Dashboard Aziendale")
+    
+    # Aggiungi il pulsante di reboot nell'header
+    col1, col2, col3 = st.columns([6, 1, 1])
+    with col3:
+        if st.button("🔄 Ricarica Dashboard", help="Clicca per ricaricare tutti i dati"):
+            st.cache_data.clear()
+            st.rerun()
+    
     st.markdown("---")
     
     try:
@@ -129,6 +137,12 @@ def main():
         logbook_processed['MeseFormattato'] = logbook_processed['Data'].apply(extract_month_from_date)
     
     st.sidebar.title("Filtri")
+    
+    # Aggiungi pulsante di reboot anche nella sidebar
+    if st.sidebar.button("🔄 Ricarica Dati", help="Ricarica tutti i dati da Google Sheets"):
+        st.cache_data.clear()
+        st.rerun()
+    
     st.sidebar.subheader("Periodo")
     
     if logbook_processed.empty:
